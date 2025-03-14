@@ -1,0 +1,87 @@
+.wrapper {
+    border-top: 1px solid rgba(22, 24, 35, 0.09);
+    border-bottom: 1px solid rgba(22, 24, 35, 0.09);
+}
+.account-item {
+    margin-bottom: 8px;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+        border-radius: 6px;
+    }
+}
+.label {
+    font-size: 1.4rem;
+    padding: 16px 8px;
+    color: #161823bf;
+    font-weight: 600;
+}
+.account-item {
+}
+
+.account-link {
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    gap: 12px;
+    margin-left: 8px;
+}
+
+.avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.info {
+    flex: 1;
+    color: #161823;
+    line-height: 1.8rem;
+}
+
+.nickname {
+    font-size: 1.4rem;
+    font-weight: 300;
+    max-width: 126px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.check {
+    margin-left: 4px;
+    color: rgba(32, 213, 236, 1);
+}
+
+.user-name {
+    font-size: 1.2rem;
+    font-weight: 200;
+    max-width: 126px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.more-btn {
+    display: flex;
+    align-items: center;
+    height: 36px;
+    width: 208px;
+    margin-bottom: 8px;
+    gap: 18px;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+        border-radius: 6px;
+    }
+}
+.more-icon {
+    width: 16px;
+    height: 16px;
+    margin-left: 16px;
+}
+.more {
+    font-size: 1.6rem;
+    color: var(--black-color);
+}

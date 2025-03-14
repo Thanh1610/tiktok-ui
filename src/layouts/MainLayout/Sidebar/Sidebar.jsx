@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 import config from '@/config';
 
 import images from '@/assets/images';
-import { SearchIcon } from '@/components/Icons';
+import { MoreIcon, SearchIcon } from '@/components/Icons';
 import {
     HomeIcon,
     HomeIconActive,
@@ -22,6 +22,7 @@ import {
     LiveIconActive,
 } from '@/components/Icons';
 import Menu, { MenuItem } from './Menu';
+import FollowingAccounts from '@/components/FollowingAccounts';
 
 const cx = classNames.bind(Styles);
 
@@ -69,10 +70,17 @@ function Sidebar({ className }) {
                     to={config.routes.messages}
                     icon={<MessagesIcon />}
                     activeIcon={<MessagesIcon />}
+                    badge={3}
                 />
                 <MenuItem title="LIVE" to={config.routes.live} icon={<LiveIcon />} activeIcon={<LiveIconActive />} />
                 <MenuItem title="Profile" to={config.routes.profile} avatar />
             </Menu>
+            <button className={cx('more-btn')}>
+                <MoreIcon />
+                <span className={cx('title')}>More</span>
+            </button>
+
+            <FollowingAccounts label="Following accounts" />
         </div>
     );
 }

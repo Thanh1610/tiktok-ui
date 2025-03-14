@@ -98,6 +98,7 @@ export const FollowingIcon = ({ className, width = '3.1rem', height = '3.1rem', 
             xmlns="http://www.w3.org/2000/svg"
         >
             <path d="M18.99 3a10 10 0 1 1 0 20 10 10 0 0 1 0-20Zm0 4a6 6 0 1 0 0 12.00A6 6 0 0 0 19 7ZM18.99 26c2.96 0 5.6.58 7.87 1.65l-3.07 3.06a15.38 15.38 0 0 0-4.8-.71C10.9 30 6.3 35.16 6 43c-.02.55-.46 1-1.02 1h-2c-.55 0-1-.45-.98-1C2.33 32.99 8.7 26 19 26ZM35.7 41.88 31.82 38H45a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1H31.82l3.88-3.88a1 1 0 0 0 0-1.41l-1.41-1.42a1 1 0 0 0-1.42 0l-7.3 7.3a2 2 0 0 0 0 2.82l7.3 7.3a1 1 0 0 0 1.42 0l1.41-1.42a1 1 0 0 0 0-1.41Z"></path>
+            <circle cx="40" cy="10" r="4" fill="#FE2C55"></circle>
         </svg>
     );
 };
@@ -269,6 +270,36 @@ export const LiveIconActive = ({ className, width = '3.1rem', height = '3.1rem',
                 d="M23.25 23.134C23.9167 23.5189 23.9167 24.4811 23.25 24.866L17.25 28.3301C16.5833 28.715 15.75 28.2339 15.75 27.4641V20.5359C15.75 19.7661 16.5833 19.285 17.25 19.6699L23.25 23.134Z"
                 fill="white"
             />
+        </svg>
+    );
+};
+
+export const MoreIcon = ({ className, width = '3.1rem', height = '3.1rem', fill = 'currentColor' }) => {
+    return (
+        <svg
+            className={className}
+            width={width}
+            height={height}
+            fill={fill}
+            viewBox="0 0 48 48"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path d="M5 24a4 4 0 1 1 8 0 4 4 0 0 1-8 0Zm15 0a4 4 0 1 1 8 0 4 4 0 0 1-8 0Zm15 0a4 4 0 1 1 8 0 4 4 0 0 1-8 0Z"></path>
+        </svg>
+    );
+};
+
+export const MoreIconActive = ({ className, width = '3.1rem', height = '3.1rem', fill = 'currentColor' }) => {
+    return (
+        <svg
+            className={className}
+            width={width}
+            height={height}
+            fill={fill}
+            viewBox="0 0 48 48"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path d="M5 24a4 4 0 1 1 8 0 4 4 0 0 1-8 0Zm15 0a4 4 0 1 1 8 0 4 4 0 0 1-8 0Zm15 0a4 4 0 1 1 8 0 4 4 0 0 1-8 0Z"></path>
         </svg>
     );
 };

@@ -15,9 +15,10 @@
     align-items: center;
     justify-content: center;
     width: 208px;
-    height: 32px;
+    height: 40px;
     border-radius: 20px;
     overflow: hidden;
+    cursor: pointer;
 }
 
 .search-input {
@@ -25,10 +26,34 @@
     font-size: 1.4rem;
     color: rgba(0, 0, 0, 0.34);
     background-color: transparent;
+    cursor: pointer;
 }
 
 .search-icon {
     width: 22px;
     height: 18px;
     margin-left: -8px;
+}
+
+.more-btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 208px;
+    height: 36px;
+    padding: 4px 0 4px 8px;
+    font-size: 1.6rem;
+    font-weight: 600;
+    background-color: transparent;
+    color: var(--black-color);
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+        border-radius: 4px;
+    }
+}
+
+.title {
+    margin-left: 12px;
+    line-height: 24px;
 }
