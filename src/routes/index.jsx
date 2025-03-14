@@ -1,4 +1,5 @@
 import HeaderOnly from '@/layouts/HeaderOnly';
+import config from '@/config';
 
 import Home from '@/pages/Home';
 import Explore from '@/pages/Explore';
@@ -11,15 +12,15 @@ import LIVE from '@/pages/LIVE';
 import Profile from '@/pages/Profile';
 
 export const publicRoutes = [
-    { path: '/', component: Home },
-    { path: '/explore', component: Explore },
-    { path: '/following', component: Following },
-    { path: '/friends', component: Friends },
-    { path: '/upload', component: Upload, layout: HeaderOnly },
-    { path: '/activity', component: Activity },
-    { path: '/messages', component: Messages },
-    { path: '/live', component: LIVE },
-    { path: '/profile', component: Profile },
+    { path: config.routes.home, component: Home },
+    { path: config.routes.explore, component: Explore },
+    { path: config.routes.following, component: Following },
+    { path: config.routes.friends, component: Friends },
+    { path: config.routes.upload, component: Upload, layout: HeaderOnly },
+    { path: config.routes.activity, component: Activity },
+    { path: config.routes.messages, component: Messages },
+    { path: config.routes.live, component: LIVE },
+    { path: config.routes.profile, component: Profile },
 ];
 
 export const privateRoutes = [];

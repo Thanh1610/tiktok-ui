@@ -1,0 +1,42 @@
+.menu-item {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: 1.6rem;
+    font-weight: 600;
+    width: 208px;
+    height: 100%;
+    padding: 6px 0 6px 8px;
+    color: var(--black-color);
+
+    &.active {
+        color: var(--primary-color);
+
+        .icon {
+            display: none;
+        }
+
+        .active-icon {
+            display: block;
+        }
+    }
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.12);
+        border-radius: 4px;
+    }
+}
+
+.avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.title {
+    margin-left: 12px;
+}
+
+.active-icon {
+    display: none;
+}
