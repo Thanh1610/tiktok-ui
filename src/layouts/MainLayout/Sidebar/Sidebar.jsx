@@ -2,9 +2,6 @@ import Styles from './Sidebar.module.scss';
 import classNames from 'classnames/bind';
 import { Link } from 'react-router';
 import config from '@/config';
-
-import images from '@/assets/images';
-import { MoreIcon, SearchIcon } from '@/components/Icons';
 import {
     HomeIcon,
     HomeIconActive,
@@ -21,8 +18,12 @@ import {
     LiveIcon,
     LiveIconActive,
 } from '@/components/Icons';
+
+import images from '@/assets/images';
+import { MoreIcon, SearchIcon } from '@/components/Icons';
 import Menu, { MenuItem } from './Menu';
 import FollowingAccounts from '@/components/FollowingAccounts';
+import FooterContainer from './FooterContainer';
 
 const cx = classNames.bind(Styles);
 
@@ -76,11 +77,12 @@ function Sidebar({ className }) {
                 <MenuItem title="Profile" to={config.routes.profile} avatar />
             </Menu>
             <button className={cx('more-btn')}>
-                <MoreIcon />
+                <MoreIcon className={cx('more-icon')} />
                 <span className={cx('title')}>More</span>
             </button>
 
             <FollowingAccounts label="Following accounts" />
+            <FooterContainer />
         </div>
     );
 }

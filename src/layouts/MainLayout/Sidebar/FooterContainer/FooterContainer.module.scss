@@ -1,0 +1,44 @@
+.wrapper {
+    margin-left: 8px;
+    padding: 16px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.title {
+    font-size: 1.5rem;
+    line-height: 2.2rem;
+    font-family: 'TikTokDisplayFont';
+    font-weight: 700;
+    cursor: pointer;
+}
+.dropdown {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 5px 0 8px;
+    gap: 6px;
+    max-width: calc(100% - 4px);
+}
+
+.dropdown-link {
+    text-decoration: none;
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+    color: rgba(22, 24, 35, 0.5);
+    transition: color 250ms;
+
+    &:hover {
+        text-decoration: underline;
+        color: #161823;
+    }
+}
+
+.copyright {
+    color: rgba(22, 24, 35, 0.5);
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+    display: inline-block;
+    margin-top: 5px;
+}
