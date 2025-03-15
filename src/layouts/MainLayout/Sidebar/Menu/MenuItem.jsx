@@ -3,9 +3,13 @@ import classNames from 'classnames/bind';
 import style from './Menu.module.scss';
 
 const cx = classNames.bind(style);
-function MenuItem({ title, to, icon, avatar, activeIcon, badge }) {
+function MenuItem({ title, to, icon, avatar, activeIcon, badge, asButton }) {
+    const Component = asButton ? 'div' : NavLink;
+
+    const className = asButton ? cx('menu-item') : (nav) => cx('menu-item', { active: nav.isActive });
+
     return (
-        <NavLink to={to} className={(nav) => cx('menu-item', { active: nav.isActive })}>
+        <Component {...(asButton ? {} : { to })} className={className}>
             <span className={cx('icon')}>
                 {icon}
                 {badge && <span className={cx('badge')}>{badge}</span>}
@@ -19,7 +23,7 @@ function MenuItem({ title, to, icon, avatar, activeIcon, badge }) {
                 />
             )}
             <span className={cx('title')}>{title}</span>
-        </NavLink>
+        </Component>
     );
 }
 

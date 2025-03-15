@@ -18,7 +18,12 @@
         }
 
         .active-icon {
-            display: block;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
         }
     }
 
@@ -33,6 +38,7 @@
     height: 32px;
     border-radius: 50%;
     object-fit: cover;
+    margin-left: -32px;
 }
 
 .icon {
@@ -40,6 +46,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 32px;
+    height: 32px;
 }
 
 .icon svg {
@@ -50,8 +58,8 @@
 
 .badge {
     position: absolute;
-    top: -5px;
-    right: -5px;
+    top: 0;
+    right: -2px;
     background-color: var(--primary-color);
     width: 16px;
     height: 16px;

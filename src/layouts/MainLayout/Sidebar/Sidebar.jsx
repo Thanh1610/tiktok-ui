@@ -17,6 +17,7 @@ import {
     MessagesIcon,
     LiveIcon,
     LiveIconActive,
+    MoreIconActive,
 } from '@/components/Icons';
 
 import images from '@/assets/images';
@@ -75,11 +76,8 @@ function Sidebar({ className }) {
                 />
                 <MenuItem title="LIVE" to={config.routes.live} icon={<LiveIcon />} activeIcon={<LiveIconActive />} />
                 <MenuItem title="Profile" to={config.routes.profile} avatar />
+                <MenuItem title="More" asButton icon={<MoreIcon />} activeIcon={<MoreIconActive />} />
             </Menu>
-            <button className={cx('more-btn')}>
-                <MoreIcon className={cx('more-icon')} />
-                <span className={cx('title')}>More</span>
-            </button>
 
             <FollowingAccounts label="Following accounts" />
             <FooterContainer />
