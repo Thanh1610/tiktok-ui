@@ -1,0 +1,112 @@
+.wrapper {
+    position: sticky;
+    top: 0;
+    background-color: var(--white-color);
+    z-index: 10;
+    background-color: var(--white-color);
+}
+.search {
+    position: relative;
+    width: 100%;
+    max-width: 320px;
+    height: 40px;
+    border-radius: 92px;
+    border: 1px solid transparent;
+    padding: 10px 4px 10px 16px;
+    background: #1618230f;
+    display: flex;
+    align-items: center;
+    z-index: 100;
+
+    .search-input {
+        height: 100%;
+        width: 100%;
+        font-size: 1.4rem;
+        line-height: 2.1rem;
+        padding-right: 40px;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        appearance: textfield;
+        caret-color: var(--primary-color);
+        z-index: 1;
+    }
+
+    &:focus-within {
+        border: 1px solid #16182333;
+    }
+
+    .clear,
+    .loading {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        font-size: 1.6rem;
+        color: rgba(22, 24, 35, 0.34);
+    }
+}
+
+.clear {
+    transform: translateY(-50%);
+}
+
+.loading {
+    animation: spinner 1s linear infinite;
+}
+
+@keyframes spinner {
+    from {
+        transform: translateY(-50%) rotate(0);
+    }
+    to {
+        transform: translateY(-50%) rotate(360deg);
+    }
+}
+
+.search-list {
+    margin: 14px 16px;
+    overflow-y: auto;
+
+    .title {
+        padding: 5px 4px 3px;
+        font-size: 1.4rem;
+        line-height: 2.2rem;
+        font-weight: 600;
+        color: #161823bf;
+    }
+}
+
+.item {
+    position: relative;
+    padding: 9px 16px;
+    list-style: none;
+    cursor: pointer;
+
+    .item-text {
+        font-size: 16px;
+        line-height: 24px;
+        padding-right: 12px;
+        padding-left: 8px;
+        font-weight: 600;
+        margin-left: 6px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    &::before {
+        position: absolute;
+        content: '';
+        top: 50%;
+        left: 12px;
+        transform: translateY(-50%);
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: rgba(22, 24, 35, 0.34);
+    }
+
+    &:hover {
+        background-color: #aaacba0f;
+    }
+}

@@ -6,13 +6,21 @@
 
 .sidebar {
     width: 240px;
-    flex-shrink: 1;
+    flex-shrink: 0;
     z-index: 10;
     padding-left: 8px;
+    display: flex;
+    flex-direction: column;
+    user-select: none;
+    overflow-y: auto;
 }
 
 .container {
     width: 100%;
     min-width: 420px;
     flex-shrink: 1;
+}
+
+.sidebar::-webkit-scrollbar {
+    display: none;
 }

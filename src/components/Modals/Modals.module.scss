@@ -1,0 +1,43 @@
+.overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    &.closing {
+        animation: modalOut 0.3s ease forwards;
+    }
+}
+
+.wrapper {
+    background-color: #000;
+    top: 0;
+    left: 0;
+    width: 392px;
+    min-height: 100vh;
+    background-color: var(--white-color);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    z-index: 99;
+}
+
+@keyframes modalOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+        width: 320px;
+    }
+    to {
+        transform: translateX(20px);
+        opacity: 0;
+        width: 0;
+    }
+}

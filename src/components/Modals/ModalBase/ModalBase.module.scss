@@ -1,0 +1,109 @@
+//root
+$modal-width: 320px;
+
+.modal {
+    width: $modal-width;
+    height: 100vh;
+    position: fixed;
+    inset-inline-start: 72px;
+    background-color: #fff;
+    z-index: 100;
+    border-right: 1px solid rgba(0, 0, 0, 0.12);
+    border-left: 1px solid rgba(0, 0, 0, 0.12);
+    overscroll-behavior: contain;
+    animation: modalIn 0.3s ease forwards;
+
+    &.closing {
+        animation: modalOut 0.3s ease forwards;
+    }
+}
+
+@keyframes modalIn {
+    from {
+        transform: translateX(20px);
+        opacity: 0;
+        width: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+        width: $modal-width;
+    }
+}
+
+@keyframes modalOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+        width: $modal-width;
+    }
+    to {
+        transform: translateX(20px);
+        opacity: 0;
+        width: 0;
+    }
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    padding: 16px 0 0 8px;
+    height: 84px;
+    background-color: var(--white-color);
+
+    .heading {
+        padding: 16px 8px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+
+    .title {
+        font-size: 2rem;
+        font-family: 'TikTokDisplayFont';
+        color: #161823;
+    }
+
+    .close-btn {
+        width: 28px;
+        height: 28px;
+        margin-right: 8px;
+        border-radius: 50%;
+        position: relative;
+
+        &:hover {
+            background-color: #eceaea;
+        }
+
+        .close-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+            margin-top: -1px;
+        }
+    }
+}
+
+.container {
+    padding: 0 8px;
+    max-height: calc(100vh - 84px);
+    overflow-y: auto;
+}
+
+//scrollbar
+html ::-webkit-scrollbar {
+    border-radius: 0px;
+    width: 8px;
+}
+
+html ::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(22, 24, 35, 0.06);
+}
+
+html *::-webkit-scrollbar-track {
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0);
+}

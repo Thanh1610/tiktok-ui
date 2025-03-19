@@ -7,7 +7,7 @@ const routes = {
     activity: '/activity',
     messages: '/messages',
     live: '/live',
-    profile: '/profile',
+    profile: '/:nickname',
 };
 
 export default routes;
