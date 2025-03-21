@@ -1,5 +1,6 @@
 import Styles from './MainLayout.module.scss';
 import classNames from 'classnames/bind';
+import MainContent from './MainContent';
 
 const cx = classNames.bind(Styles);
 import SideBar from './Sidebar';
@@ -9,7 +10,7 @@ function MainLayout({ children }) {
         <div>
             <div className={cx('wrapper')}>
                 <SideBar className={cx('sidebar')} />
-                <div className={cx('container')}>{children}</div>
+                <div className={cx('main-content')}>{children}</div>
             </div>
         </div>
     );

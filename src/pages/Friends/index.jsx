@@ -1,5 +1,7 @@
+import MainContent from '@/layouts/MainLayout/MainContent';
+
 function Friends() {
-    return <h2>Friends page</h2>;
+    return <MainContent />;
 }
 
 export default Friends;

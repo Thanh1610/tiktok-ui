@@ -1,5 +1,7 @@
+import MainContent from '@/layouts/MainLayout/MainContent';
+
 function Following() {
-    return <h2>Following page</h2>;
+    return <MainContent />;
 }
 
 export default Following;

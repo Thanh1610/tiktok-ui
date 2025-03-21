@@ -1,0 +1,39 @@
+.list-container {
+    width: 100%;
+    background-color: var(--white-color);
+    max-height: 100vh;
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+    padding-inline-end: calc(var(--feed-nav-button-width) + 1.6rem);
+    --feed-nav-button-width: 4.8rem;
+}
+
+.item-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    gap: 1.6rem;
+    padding-inline-start: calc(var(--feed-nav-button-width) + 1.6rem);
+    padding-inline-end: calc(24rem - var(--feed-nav-button-width) - 1.6rem);
+    margin: 0px auto;
+    transition-property: margin, width, padding;
+    transition-duration: 300ms;
+    transition-timing-function: linear;
+    overflow: hidden clip;
+    scroll-snap-stop: always;
+    scroll-snap-align: start center;
+}
+
+.wrapper-video {
+    height: max-content;
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    gap: 1.6rem;
+}

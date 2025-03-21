@@ -1,9 +1,7 @@
+import MainContent from '@/layouts/MainLayout/MainContent';
+
 function Home() {
-    return (
-        <div>
-            <h2>Home page</h2>
-        </div>
-    );
+    return <MainContent />;
 }
 
 export default Home;
