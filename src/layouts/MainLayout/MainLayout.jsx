@@ -1,6 +1,5 @@
 import Styles from './MainLayout.module.scss';
 import classNames from 'classnames/bind';
-import MainContent from './MainContent';
 
 const cx = classNames.bind(Styles);
 import SideBar from './Sidebar';

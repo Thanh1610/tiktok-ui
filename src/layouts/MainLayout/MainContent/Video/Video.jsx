@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMusic, faPlay, faPause } from '@fortawesome/free-solid-svg-icons';
 import { useState, useRef, useEffect } from 'react';
 import { VolumeUpIcon, VolumeMute, MenuIcon } from '@/components/Icons';
+import MenuVideo from '@/components/MenuVideo';
 
 const cx = classNames.bind(styles);
 
@@ -14,38 +15,36 @@ function Video({ data }) {
     const [isPlaying, setIsPlaying] = useState(true);
     const [showPlayIcon, setShowPlayIcon] = useState(null);
     const [showVolumeSlider, setShowVolumeSlider] = useState(false);
-    const videoRefs = useRef();
+    const [display, setDisplay] = useState(false);
+    const videoRef = useRef();
 
     useEffect(() => {
+        const videoElement = videoRef.current;
+        if (!videoElement) return;
+
         const observer = new IntersectionObserver(
             ([entry]) => {
-                if (videoRefs.current) {
-                    if (entry.isIntersecting) {
-                        videoRefs.current.play();
-                    } else {
-                        videoRefs.current.pause();
-                        videoRefs.current.currentTime = 0;
-                    }
+                if (entry.isIntersecting) {
+                    videoElement.play();
+                } else {
+                    videoElement.pause();
+                    videoElement.currentTime = 0;
                 }
             },
             { threshold: 0.5 },
         );
 
-        if (videoRefs.current) {
-            observer.observe(videoRefs.current);
-        }
+        observer.observe(videoElement);
 
         return () => {
-            if (videoRefs.current) {
-                observer.unobserve(videoRefs.current);
-            }
+            observer.unobserve(videoElement);
         };
     }, []);
 
     //bật tắt tiếng
     const toggleMute = () => {
-        if (videoRefs.current) {
-            videoRefs.current.muted = !isMuted;
+        if (videoRef.current) {
+            videoRef.current.muted = !isMuted;
             setIsmuted(!isMuted);
             setVolume(isMuted ? 50 : 0);
         }
@@ -55,8 +54,8 @@ function Video({ data }) {
     const handleVolumeChange = (e) => {
         const newVolume = e.target.value;
         setVolume(newVolume);
-        if (videoRefs.current) {
-            videoRefs.current.volume = newVolume / 100;
+        if (videoRef.current) {
+            videoRef.current.volume = newVolume / 100;
             if (newVolume === 0) {
                 setIsmuted(true);
             } else {
@@ -67,12 +66,12 @@ function Video({ data }) {
 
     //play/pause
     const togglePlay = () => {
-        if (videoRefs.current) {
+        if (videoRef.current) {
             if (isPlaying) {
-                videoRefs.current.pause();
+                videoRef.current.pause();
                 setShowPlayIcon('play');
             } else {
-                videoRefs.current.play();
+                videoRef.current.play();
                 setShowPlayIcon('pause');
             }
             setIsPlaying(!isPlaying);
@@ -85,7 +84,7 @@ function Video({ data }) {
         <div className={cx('video')}>
             <div className={cx('video-wrapper')}>
                 <video
-                    ref={videoRefs}
+                    ref={videoRef}
                     className={cx('video-player')}
                     src={data.popular_video.file_url}
                     loop
@@ -126,15 +125,19 @@ function Video({ data }) {
                             </div>
                         )}
                     </div>
-                    <button className={cx('menu-btn')}>
-                        <MenuIcon />
-                    </button>
+                    <MenuVideo placement="right-end" offset={[0, 26]} style={{ background: '#fff' }}>
+                        <button className={cx('menu-btn')}>
+                            <MenuIcon />
+                        </button>
+                    </MenuVideo>
                 </div>
                 <div className={cx('video-desc')}>
                     <h2 className={cx('nickname')}>{data.nickname}</h2>
                     <div className={cx('desc')}>
-                        <p className={cx('desc-text')}>{data.popular_video.description}</p>
-                        <button className={cx('desc-btn')}>more</button>
+                        <p className={cx('desc-text', { less: display })}>{data.popular_video.description}</p>
+                        <button className={cx('desc-btn')} onClick={() => setDisplay(!display)}>
+                            {display ? 'less' : 'more'}
+                        </button>
                     </div>
 
                     {data.popular_video.music && (

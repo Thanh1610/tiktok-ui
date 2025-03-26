@@ -37,3 +37,36 @@
     align-items: center;
     gap: 1.6rem;
 }
+
+.nav-buttons {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    transform: translateX(-100%);
+
+    .nav-btn {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background-color: #0000000d;
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.12);
+        }
+
+        .nav-icon {
+            font-size: 2.4rem;
+        }
+
+        &.disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+    }
+}

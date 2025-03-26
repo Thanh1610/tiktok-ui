@@ -11,12 +11,15 @@ import {
     FollowIconActive,
     FollowIcon,
 } from '@/components/Icons';
+import CommentsModal from '@/components/CommentsModal';
 
 const cx = classNames.bind(styles);
 function VideoSidebar({ data }) {
     const [heartIcon, setHeartIcon] = useState(false);
     const [bookMarkIcon, setBookMarkIcon] = useState(false);
     const [followIcon, setFollowIcon] = useState(false);
+    const [openCommentModal, setOpenCommentModal] = useState(false);
+
     return (
         <div className={cx('video-info')}>
             <div className={cx('video-avatar')}>
@@ -30,7 +33,7 @@ function VideoSidebar({ data }) {
                 <strong className={cx('count')}>{data.popular_video.likes_count}</strong>
             </button>
 
-            <button className={cx('info-btn')}>
+            <button className={cx('info-btn')} onClick={() => setOpenCommentModal(true)}>
                 <span className={cx('wrapper-icon')}>
                     <FontAwesomeIcon icon={faCommentDots} className={cx('icon')} />
                 </span>
@@ -48,6 +51,8 @@ function VideoSidebar({ data }) {
                 </span>
                 <strong className={cx('count')}>{data.popular_video.views_count}</strong>
             </button>
+
+            {openCommentModal && <CommentsModal data={data} onClose={() => setOpenCommentModal(false)} />}
         </div>
     );
 }

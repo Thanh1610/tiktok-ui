@@ -1,6 +1,6 @@
 .video {
     min-width: calc(500px - 12.5rem);
-    min-height: calc(888px - 27rem);
+    min-height: 100vh;
     max-height: calc(100vh - 3.2rem);
     max-width: calc((100vh - 3.2rem) * 0.5625);
     align-self: center;
@@ -9,10 +9,10 @@
 
     .video-wrapper {
         position: relative;
-        width: 348px;
+        width: 328px;
         height: 100vh;
-        min-width: 100%;
-        min-height: 90vh;
+        min-width: 328px;
+        min-height: 100vh;
         cursor: pointer;
 
         &:hover .controls {
@@ -91,6 +91,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: relative;
 
     .desc-text {
         font-size: 1.4rem;
@@ -100,9 +101,17 @@
         overflow: hidden;
         text-overflow: ellipsis;
         width: 70%;
+
+        &.less {
+            overflow: visible;
+            white-space: normal;
+        }
     }
 
     .desc-btn {
+        position: absolute;
+        right: 0;
+        bottom: 0;
         color: var(--white-color);
         background-color: transparent;
         cursor: pointer;

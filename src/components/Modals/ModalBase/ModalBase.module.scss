@@ -61,7 +61,7 @@ $modal-width: 320px;
     .title {
         font-size: 2rem;
         font-family: 'TikTokDisplayFont';
-        color: #161823;
+        color: var(--text-color);
     }
 
     .close-btn {
