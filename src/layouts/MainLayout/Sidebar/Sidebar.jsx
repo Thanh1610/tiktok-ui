@@ -80,9 +80,10 @@ function Sidebar({ className }) {
                     <MenuItem title="Upload" to={config.routes.upload} icon={<UploadIcon />} />
                     <MenuItem
                         title="Activity"
-                        to={config.routes.activity}
+                        asButton
                         icon={<ActivityIcon />}
                         activeIcon={<ActivityIconActive />}
+                        onClick={() => openModal('activity')}
                     />
                     <MenuItem
                         title="Messages"
@@ -103,9 +104,7 @@ function Sidebar({ className }) {
                         asButton
                         icon={<MoreIcon />}
                         activeIcon={<MoreIconActive />}
-                        onClick={() => {
-                            openModal('more');
-                        }}
+                        onClick={() => openModal('more')}
                     />
                 </Menu>
 

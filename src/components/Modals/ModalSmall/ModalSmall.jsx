@@ -57,9 +57,12 @@ function ModalSmall({ onOpenModal, onClose, type }) {
                     <UploadIcon />
                 </Link>
 
-                <Link to={config.routes.activity} className={cx('item-link')} onClick={onClose}>
+                <div
+                    className={cx('item-link')}
+                    onClick={() => (type === 'activity' ? onClose() : onOpenModal('activity'))}
+                >
                     <ActivityIcon />
-                </Link>
+                </div>
 
                 <Link to={config.routes.messages} className={cx('item-link')} onClick={onClose}>
                     <MessagesIcon />
@@ -76,12 +79,12 @@ function ModalSmall({ onOpenModal, onClose, type }) {
                         alt=""
                     />
                 </Link>
-                <Link
+                <div
                     className={cx('item-link', 'pd-8')}
                     onClick={() => (type === 'more' ? onClose() : onOpenModal('more'))}
                 >
                     <MoreIcon />
-                </Link>
+                </div>
             </div>
         </div>
     );

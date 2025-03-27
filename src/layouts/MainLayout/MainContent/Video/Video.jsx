@@ -6,6 +6,7 @@ import { faMusic, faPlay, faPause } from '@fortawesome/free-solid-svg-icons';
 import { useState, useRef, useEffect } from 'react';
 import { VolumeUpIcon, VolumeMute, MenuIcon } from '@/components/Icons';
 import MenuVideo from '@/components/MenuVideo';
+import VideoSidebar from '../VideoSidebar';
 
 const cx = classNames.bind(styles);
 
@@ -17,6 +18,21 @@ function Video({ data }) {
     const [showVolumeSlider, setShowVolumeSlider] = useState(false);
     const [display, setDisplay] = useState(false);
     const videoRef = useRef();
+
+    const [progress, setProgress] = useState(0);
+
+    useEffect(() => {
+        const video = videoRef.current;
+        if (!video) return;
+
+        const updateProgress = () => {
+            const percent = (video.currentTime / video.duration) * 100;
+            setProgress(percent);
+        };
+
+        video.addEventListener('timeupdate', updateProgress);
+        return () => video.removeEventListener('timeupdate', updateProgress);
+    }, []);
 
     useEffect(() => {
         const videoElement = videoRef.current;
@@ -78,6 +94,12 @@ function Video({ data }) {
 
             // Ẩn icon sau 800ms
             setTimeout(() => setShowPlayIcon(null), 800);
+        }
+    };
+
+    const handlePauseVideo = () => {
+        if (videoRef.current) {
+            videoRef.current.pause();
         }
     };
     return (
@@ -146,8 +168,13 @@ function Video({ data }) {
                             <p className={cx('music-name')}>{data.popular_video.music}</p>
                         </span>
                     )}
+
+                    <div className={cx('progress-bar')}>
+                        <div className={cx('progress')} style={{ width: `${progress}%` }} />
+                    </div>
                 </div>
             </div>
+            <VideoSidebar data={data} onCommentsModal={handlePauseVideo} />
         </div>
     );
 }

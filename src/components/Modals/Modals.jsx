@@ -6,12 +6,14 @@ import { useEffect, useState } from 'react';
 import Modal from './Modal/Modal';
 import ModalSmall from './ModalSmall';
 import MoreModal from './MoreModal';
+import ActivityModal from './ActivityModal';
 
 const cx = classNames.bind(styles);
 
 const MODAL_COMPONENTS = {
     search: Modal,
     more: MoreModal,
+    activity: ActivityModal,
 };
 
 function Modals({ isOpen, onClose, type, onOpenModal }) {

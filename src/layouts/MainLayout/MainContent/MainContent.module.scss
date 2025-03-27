@@ -70,3 +70,31 @@
         }
     }
 }
+
+.Promotion {
+    position: absolute;
+    height: 32px;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translate(-50%, -100%);
+    border: 1px solid rgba(22, 24, 35, 0.12);
+    background: none rgb(255, 255, 255);
+    outline: none;
+    color: #161823bf;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: 16px;
+    padding: 0 8px;
+
+    &:hover {
+        border-color: rgba(22, 24, 35, 0.2);
+        background-color: rgb(255, 255, 255);
+    }
+
+    .title {
+        margin-left: 4px;
+    }
+}

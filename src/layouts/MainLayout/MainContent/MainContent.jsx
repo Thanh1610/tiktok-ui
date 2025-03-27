@@ -4,8 +4,8 @@ import { useEffect, useState, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import * as videoService from '@/apiServices/videoService';
-import VideoSidebar from './VideoSidebar';
 import Video from './Video';
+import { CoinIcon } from '@/components/Icons';
 
 const cx = classNames.bind(styles);
 
@@ -32,20 +32,19 @@ function MainContent() {
         }
     };
 
-    const handleNextVideo = () => {
-        if (currentIndex < users.length - 1) {
-            const newIndex = currentIndex + 1;
+    const handleVideoChange = (newIndex) => {
+        if (newIndex >= 0 && newIndex < users.length) {
             scrollToVideo(newIndex);
             setCurrentIndex(newIndex);
         }
     };
 
+    const handleNextVideo = () => {
+        handleVideoChange(currentIndex + 1);
+    };
+
     const handlePrevVideo = () => {
-        if (currentIndex > 0) {
-            const newIndex = currentIndex - 1;
-            scrollToVideo(newIndex);
-            setCurrentIndex(newIndex);
-        }
+        handleVideoChange(currentIndex - 1);
     };
 
     return (
@@ -55,7 +54,6 @@ function MainContent() {
                     <article className={cx('item-container')} key={index}>
                         <div className={cx('wrapper-video')}>
                             <Video data={user} />
-                            <VideoSidebar data={user} />
                         </div>
                     </article>
                 ))}
@@ -70,6 +68,11 @@ function MainContent() {
                     <FontAwesomeIcon icon={faChevronDown} className={cx('nav-icon')} onClick={handleNextVideo} />
                 </button>
             </div>
+
+            <button className={cx('Promotion')}>
+                <CoinIcon />
+                <p className={cx('title')}>Get Coins</p>
+            </button>
         </>
     );
 }
