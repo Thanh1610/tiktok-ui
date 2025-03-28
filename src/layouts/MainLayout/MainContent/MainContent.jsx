@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import * as videoService from '@/apiServices/videoService';
 import Video from './Video';
-import { CoinIcon } from '@/components/Icons';
 
 const cx = classNames.bind(styles);
 
@@ -68,11 +67,6 @@ function MainContent() {
                     <FontAwesomeIcon icon={faChevronDown} className={cx('nav-icon')} onClick={handleNextVideo} />
                 </button>
             </div>
-
-            <button className={cx('Promotion')}>
-                <CoinIcon />
-                <p className={cx('title')}>Get Coins</p>
-            </button>
         </>
     );
 }

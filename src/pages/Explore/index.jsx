@@ -1,5 +1,6 @@
+import ExploreContent from '@/layouts/ExploreLayout';
 function Explore() {
-    return <h2>Explore page</h2>;
+    return <ExploreContent />;
 }
 
 export default Explore;

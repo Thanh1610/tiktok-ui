@@ -47,7 +47,7 @@ function Sidebar({ className }) {
 
                 <div className={cx('search-btn')} onClick={() => openModal('search')}>
                     <SearchIcon className={cx('search-icon')} />
-                    <input className={cx('search-input')} type="text" placeholder="Tìm kiếm..." />
+                    <input className={cx('search-input')} type="text" placeholder="Search" />
                 </div>
             </div>
 
