@@ -2,7 +2,8 @@ import classNames from 'classnames/bind';
 import styles from './VideoSidebar.module.scss';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCommentDots, faShare } from '@fortawesome/free-solid-svg-icons';
+import { faCommentDots } from '@fortawesome/free-solid-svg-icons';
+import ShareModal from '@/components/ShareModal';
 import {
     HeartIcon,
     HeartIconActive,
@@ -10,9 +11,9 @@ import {
     BookMarkIcon,
     FollowIconActive,
     FollowIcon,
+    ShareActiveIcon,
 } from '@/components/Icons';
 import CommentsModal from '@/components/CommentsModal';
-import ShareModal from '@/components/ShareModal';
 
 const cx = classNames.bind(styles);
 function VideoSidebar({ data, onCommentsModal }) {
@@ -53,7 +54,7 @@ function VideoSidebar({ data, onCommentsModal }) {
 
             <button className={cx('info-btn')} onClick={() => setShareModal(true)}>
                 <span className={cx('wrapper-icon')}>
-                    <FontAwesomeIcon icon={faShare} className={cx('icon')} />
+                    <ShareActiveIcon className={cx('icon')} />
                 </span>
                 <strong className={cx('count')}>{data.popular_video.views_count}</strong>
             </button>

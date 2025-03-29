@@ -1,40 +1,43 @@
 import styles from './FollowingAccounts.module.scss';
 import classNames from 'classnames/bind';
-import AccountItem from './AccountItem';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
-import * as request from '@/utils/request';
+
+import AccountItem from './AccountItem';
+import * as videoService from '@/apiServices/videoService';
 
 const cx = classNames.bind(styles);
 function FollowingAccounts({ label }) {
-    const [accounts, setAccounts] = useState([]);
-    const [accountType, setAccountType] = useState('less');
+    const [users, setUsers] = useState([]);
+    const [perPage, setPerPage] = useState(5);
 
     useEffect(() => {
-        const fetchAccounts = async () => {
-            try {
-                const res = await request.get(`users/search?q=T&type=${accountType}`);
-                setAccounts(res.data);
-            } catch (error) {
-                console.error('Error fetching accounts:', error);
-            }
+        const fetchUsers = async () => {
+            const users = await videoService.video(1, perPage);
+            setUsers(users);
         };
 
-        fetchAccounts();
-    }, [accountType]);
+        fetchUsers();
+    }, [perPage]);
+
+    const handleSeeMore = () => {
+        if (perPage < 20) {
+            setPerPage((prev) => prev + 5);
+        }
+    };
 
     return (
         <div className={cx('wrapper')}>
             <p className={cx('label')}>{label}</p>
 
-            {accounts.map((account, index) => (
-                <AccountItem key={index} to={`/@${account.nickname}`} data={account} />
+            {users.map((user, index) => (
+                <AccountItem key={index} to={`/:${user.nickname}`} data={user} />
             ))}
 
             <div className={cx('more-btn')}>
                 <FontAwesomeIcon className={cx('more-icon')} icon={faChevronDown} />
-                <p className={cx('more')} onClick={() => setAccountType('more')}>
+                <p className={cx('more')} onClick={handleSeeMore}>
                     See more
                 </p>
             </div>

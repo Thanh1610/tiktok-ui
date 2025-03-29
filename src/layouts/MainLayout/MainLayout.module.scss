@@ -34,6 +34,8 @@
     align-items: stretch;
     position: relative;
     justify-content: center;
+    overflow-y: auto;
+    scroll-behavior: 'smooth';
 }
 
 .Promotion {

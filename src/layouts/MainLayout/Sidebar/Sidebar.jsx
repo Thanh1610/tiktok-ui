@@ -41,7 +41,7 @@ function Sidebar({ className }) {
     return (
         <div className={cx(className)}>
             <div className={cx('header')}>
-                <Link to={config.routes.home} className={cx('logo-link')}>
+                <Link to={config.routes.home} className={cx('logo-link')} onClick={() => window.location.reload()}>
                     <img src={images.logo} alt="tiktok" />
                 </Link>
 
@@ -98,7 +98,7 @@ function Sidebar({ className }) {
                         icon={<LiveIcon />}
                         activeIcon={<LiveIconActive />}
                     />
-                    <MenuItem title="Profile" to={config.routes.profile} avatar />
+                    <MenuItem title="Profile" to={`/:${'xucana'}`} avatar />
                     <MenuItem
                         title="More"
                         asButton
