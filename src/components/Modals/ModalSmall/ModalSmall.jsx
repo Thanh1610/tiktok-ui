@@ -72,10 +72,10 @@ function ModalSmall({ onOpenModal, onClose, type }) {
                     <LiveIcon />
                 </Link>
 
-                <Link to={config.routes.profile} className={cx('item-link')} onClick={onClose}>
+                <Link to={`/:${'xucana'}`} className={cx('item-link')} onClick={onClose}>
                     <img
                         className={cx('avatar')}
-                        src="https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/6e5df93a012f301f942d1dd5172c8884~tplv-tiktokx-cropcenter:720:720.jpeg?dr=14579&refresh_token=4c440574&x-expires=1742306400&x-signature=9HKrqHi%2BVW%2Fl38ftgjX0SVCpAjQ%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=my"
+                        src="https://files.fullstack.edu.vn/f8-tiktok/users/4854/646231eb7a517.png"
                         alt=""
                     />
                 </Link>
