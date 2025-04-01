@@ -19,7 +19,7 @@ import {
     LiveIconActive,
     MoreIconActive,
 } from '@/components/Icons';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import images from '@/assets/images';
 import { MoreIcon, SearchIcon } from '@/components/Icons';
@@ -27,11 +27,28 @@ import Menu, { MenuItem } from './Menu';
 import FollowingAccounts from '@/components/FollowingAccounts';
 import FooterContainer from './FooterContainer';
 import Modals from '@/components/Modals';
+import ModalSmall from '@/components/Modals/ModalSmall';
 
 const cx = classNames.bind(styles);
 
 function Sidebar({ className }) {
     const [modalType, setModalType] = useState(null);
+    const [showModal, setShowModal] = useState(false);
+
+    useEffect(() => {
+        const checkScreenSize = () => {
+            if (window.innerWidth <= 1024) {
+                setShowModal(true);
+            } else {
+                setShowModal(false);
+            }
+        };
+
+        checkScreenSize();
+        window.addEventListener('resize', checkScreenSize);
+
+        return () => window.removeEventListener('resize', checkScreenSize);
+    }, [showModal]);
 
     const openModal = (type) => {
         setModalType(type);
@@ -39,7 +56,7 @@ function Sidebar({ className }) {
     const closeModal = () => setModalType(null);
 
     return (
-        <div className={cx(className)}>
+        <div className={cx(className, 'resize')}>
             <div className={cx('header')}>
                 <Link to={config.routes.home} className={cx('logo-link')} onClick={() => window.location.reload()}>
                     <img src={images.logo} alt="tiktok" />
@@ -111,6 +128,7 @@ function Sidebar({ className }) {
                 <FollowingAccounts label="Following accounts" />
                 <FooterContainer />
             </div>
+            {showModal && <ModalSmall onClose={closeModal} onOpenModal={openModal} />}
             <Modals isOpen={!!modalType} type={modalType} onClose={closeModal} onOpenModal={openModal} />
         </div>
     );

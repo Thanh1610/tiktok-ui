@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router';
 import classNames from 'classnames/bind';
 import styles from './ProfilePage.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGear, faGripVertical, faRetweet } from '@fortawesome/free-solid-svg-icons';
+import { faFire, faGear, faGripVertical, faPenToSquare, faRetweet } from '@fortawesome/free-solid-svg-icons';
 import { LinkIcon, ShareIcon } from '../Icons';
 import { faBookmark, faHeart } from '@fortawesome/free-regular-svg-icons';
 
@@ -18,6 +18,7 @@ function ProfilePage() {
     const [isOpenShareModal, setIsOpenShareModal] = useState(false);
     const [activeTab, setActiveTab] = useState(0);
     const [activeSort, setActiveSort] = useState(0);
+    const [shrink, setShrink] = useState(false);
 
     const videoRef = useRef();
     const { nickname } = useParams();
@@ -31,6 +32,21 @@ function ProfilePage() {
     ];
 
     const sortOptions = ['Latest', 'Popular', 'Oldest'];
+
+    useEffect(() => {
+        const checkScreenSize = () => {
+            if (window.innerWidth <= 768) {
+                setShrink(true);
+            } else {
+                setShrink(false);
+            }
+        };
+
+        checkScreenSize();
+        window.addEventListener('resize', checkScreenSize);
+
+        return () => window.removeEventListener('resize', checkScreenSize);
+    }, []);
 
     useEffect(() => {
         const fetchUsers = async () => {
@@ -63,8 +79,12 @@ function ProfilePage() {
                         </div>
 
                         <div className={cx('wrapper-btn')}>
-                            <button className={cx('edit-btn', 'btn')}>Edit Profile</button>
-                            <button className={cx('post-btn', 'btn')}>Promote Post</button>
+                            <button className={cx('edit-btn', 'btn', { small: shrink })}>
+                                {shrink ? <FontAwesomeIcon icon={faPenToSquare} /> : 'Edit Profile'}
+                            </button>
+                            <button className={cx('post-btn', 'btn', { small: shrink })}>
+                                {shrink ? <FontAwesomeIcon icon={faFire} /> : 'Promote Post'}
+                            </button>
                             <button className={cx('setting-btn')}>
                                 <FontAwesomeIcon icon={faGear} className={cx('icon-btn')} />
                             </button>

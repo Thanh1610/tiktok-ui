@@ -87,7 +87,7 @@ function ExploreContent() {
     return (
         <div className={cx('wrapper')}>
             <div className={cx('content')} ref={contentRef}>
-                <Navbar className={cx({ hide: hideNavbar })} />
+                <Navbar className={cx({ hide: hideNavbar }, 'navbar')} />
                 <div className={cx('list')}>
                     {users.map((user) => (
                         <div key={user.id} className={cx('item-wrapper')}>

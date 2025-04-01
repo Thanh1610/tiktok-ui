@@ -10,9 +10,7 @@ import VideoSidebar from '../VideoSidebar';
 
 const cx = classNames.bind(styles);
 
-function Video({ data }) {
-    const [isMuted, setIsmuted] = useState(false);
-    const [volume, setVolume] = useState(50);
+function Video({ data, isMuted, mute, volume, onVolumeChange }) {
     const [isPlaying, setIsPlaying] = useState(true);
     const [showPlayIcon, setShowPlayIcon] = useState(null);
     const [showVolumeSlider, setShowVolumeSlider] = useState(false);
@@ -57,25 +55,14 @@ function Video({ data }) {
         };
     }, []);
 
-    //bật tắt tiếng
-    const toggleMute = () => {
-        if (videoRef.current) {
-            videoRef.current.muted = !isMuted;
-            setIsmuted(!isMuted);
-            setVolume(isMuted ? 50 : 0);
-        }
-    };
-
     //tăng giảm âm
     const handleVolumeChange = (e) => {
         const newVolume = e.target.value;
-        setVolume(newVolume);
+        onVolumeChange(newVolume);
         if (videoRef.current) {
             videoRef.current.volume = newVolume / 100;
-            if (newVolume === 0) {
-                setIsmuted(true);
-            } else {
-                setIsmuted(false);
+            if (newVolume > 0 && isMuted) {
+                mute(false);
             }
         }
     };
@@ -111,6 +98,7 @@ function Video({ data }) {
                     src={data.popular_video.file_url}
                     loop
                     autoPlay
+                    muted={isMuted}
                     onClick={togglePlay}
                 />
 
@@ -129,7 +117,7 @@ function Video({ data }) {
                         onMouseEnter={() => setShowVolumeSlider(true)}
                         onMouseLeave={() => setShowVolumeSlider(false)}
                     >
-                        <button className={cx('volume-btn')} onClick={toggleMute}>
+                        <button className={cx('volume-btn')} onClick={mute}>
                             {!isMuted ? <VolumeUpIcon /> : <VolumeMute />}
                         </button>
 

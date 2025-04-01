@@ -11,6 +11,8 @@ const cx = classNames.bind(styles);
 function MainContent() {
     const [users, setUsers] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [isMuted, setIsMuted] = useState(true);
+    const [volume, setVolume] = useState(0);
     const listContainerRef = useRef(null);
 
     useEffect(() => {
@@ -46,13 +48,32 @@ function MainContent() {
         handleVideoChange(currentIndex - 1);
     };
 
+    const toggleMute = () => {
+        if (isMuted) {
+            setVolume(50);
+        } else {
+            setVolume(0);
+        }
+        setIsMuted((prevMuted) => !prevMuted);
+    };
+
+    const handleVolumeChange = (newVolume) => {
+        setVolume(newVolume);
+    };
+
     return (
         <>
             <div className={cx('list-container')} ref={listContainerRef}>
                 {users.map((user, index) => (
                     <article className={cx('item-container')} key={index}>
                         <div className={cx('wrapper-video')}>
-                            <Video data={user} />
+                            <Video
+                                data={user}
+                                isMuted={isMuted}
+                                mute={toggleMute}
+                                volume={volume}
+                                onVolumeChange={handleVolumeChange}
+                            />
                         </div>
                     </article>
                 ))}

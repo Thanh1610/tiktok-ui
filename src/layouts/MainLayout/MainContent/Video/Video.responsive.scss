@@ -1,0 +1,19 @@
+@media (min-width: 1025px) {
+    .video {
+        width: 500px;
+
+        .video-wrapper {
+            width: 100% !important;
+        }
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .video {
+        width: 500px !important;
+
+        .video-wrapper {
+            width: 100% !important;
+        }
+    }
+}

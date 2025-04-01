@@ -1,3 +1,4 @@
+@import './ProfilePage.reponsive.scss';
 .container {
     display: flex;
     padding: 32px 24px 36px;
@@ -7,6 +8,7 @@
     margin: 0px auto;
     box-sizing: content-box;
     min-height: 1000px;
+    flex-shrink: 0;
 }
 
 .content {

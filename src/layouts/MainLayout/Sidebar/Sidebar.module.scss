@@ -1,3 +1,9 @@
+@import './Sidebar.reponsive.scss';
+.wrapper {
+    width: 240px;
+    min-width: 240px;
+}
+
 .header {
     padding: 20px 0 8px 0;
     display: flex;

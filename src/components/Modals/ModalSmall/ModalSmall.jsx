@@ -30,7 +30,6 @@ function ModalSmall({ onOpenModal, onClose, type }) {
                         className={cx('search-btn')}
                         onClick={() => (type === 'search' ? onClose() : onOpenModal('search'))}
                     >
-                        <div className={cx('wrapper-searchIcon')}></div>
                         <SearchIcon className={cx('search-icon')} />
                     </div>
                 </div>

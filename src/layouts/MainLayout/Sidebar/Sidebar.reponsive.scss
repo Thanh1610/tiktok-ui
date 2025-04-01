@@ -1,0 +1,7 @@
+@media screen and (max-width: 1024px) {
+    .resize {
+        width: 72px;
+        min-width: 72px;
+        flex-shrink: 0;
+    }
+}
