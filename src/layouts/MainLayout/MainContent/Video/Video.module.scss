@@ -1,4 +1,4 @@
-@import './Video.responsive.scss';
+@use './Video.responsive.scss';
 
 .video {
     min-width: calc(500px - 12.5rem);
