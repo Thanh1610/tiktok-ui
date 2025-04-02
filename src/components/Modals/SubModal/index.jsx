@@ -1,1 +1,1 @@
-export { default } from './Submodal';
+export { default } from './SubModal';
