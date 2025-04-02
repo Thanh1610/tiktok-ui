@@ -1,0 +1,22 @@
+.wrapper {
+    position: relative;
+    width: 100%;
+    margin: 0 48px;
+    overflow: hidden;
+}
+
+.content {
+    width: 100%;
+    max-width: 1200px;
+    height: 500px;
+    padding-top: 96px;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}

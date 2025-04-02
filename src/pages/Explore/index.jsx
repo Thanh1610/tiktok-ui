@@ -1,4 +1,4 @@
-import ExploreContent from '@/layouts/ExploreLayout';
+import ExploreContent from '@/layouts/components/ExplorePage';
 function Explore() {
     return <ExploreContent />;
 }

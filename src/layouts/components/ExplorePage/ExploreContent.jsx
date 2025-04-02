@@ -11,6 +11,24 @@ import { VolumeMute, VolumeUpIcon } from '@/components/Icons';
 import CommentsModal from '@/components/CommentsModal';
 
 const cx = classNames.bind(styles);
+
+const categories = [
+    'All',
+    'Singing & Dancing',
+    'Comedy',
+    'Sports',
+    'Anime & Comics',
+    'Relationship',
+    'Shows',
+    'Lipsync',
+    'Daily Life',
+    'Beauty Care',
+    'Games',
+    'Society',
+    'Food',
+    'Cars',
+];
+
 function ExploreContent() {
     const [users, setUsers] = useState([]);
     const [hideNavbar, setHideNavbar] = useState(false);
@@ -87,7 +105,7 @@ function ExploreContent() {
     return (
         <div className={cx('wrapper')}>
             <div className={cx('content')} ref={contentRef}>
-                <Navbar className={cx({ hide: hideNavbar }, 'navbar')} />
+                <Navbar className={cx({ hide: hideNavbar }, 'navbar')} categories={categories} />
                 <div className={cx('list')}>
                     {users.map((user) => (
                         <div key={user.id} className={cx('item-wrapper')}>

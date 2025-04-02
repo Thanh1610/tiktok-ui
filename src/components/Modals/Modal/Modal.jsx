@@ -2,7 +2,7 @@ import classNames from 'classnames/bind';
 import styles from './Modal.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark, faSpinner } from '@fortawesome/free-solid-svg-icons';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 
 import ModalBase from '../ModalBase';
 import { useDebounce } from '@/hooks';
@@ -37,19 +37,18 @@ function Modal({ onClose }) {
     const searchRef = useRef();
     const debounced = useDebounce(searchValue, 500);
 
-    const handleClearClick = () => {
+    const handleClearClick = useCallback(() => {
         setSearchValue('');
         setSearchResult([]);
         searchRef.current.focus();
-    };
+    }, []);
 
-    const handleChange = (e) => {
+    const handleChange = useCallback((e) => {
         const searchValue = e.target.value;
-
         if (!searchValue.startsWith(' ')) {
             setSearchValue(searchValue);
         }
-    };
+    }, []);
 
     useEffect(() => {
         sessionStorage.setItem('lastSearch', searchValue);

@@ -1,4 +1,3 @@
-import HeaderOnly from '@/layouts/HeaderOnly';
 import config from '@/config';
 
 import Home from '@/pages/Home';
@@ -9,7 +8,7 @@ import Upload from '@/pages/Upload';
 import Messages from '@/pages/Messages';
 import LIVE from '@/pages/LIVE';
 import Profile from '@/pages/Profile';
-import UploadPage from '@/components/UploadPage';
+import UploadPage from '@/layouts/components/UploadPage';
 
 export const publicRoutes = [
     { path: config.routes.home, component: Home },

@@ -43,7 +43,7 @@ function Modals({ isOpen, onClose, type, onOpenModal }) {
         }
     };
 
-    const hansleAnimationEnd = () => {
+    const handleAnimationEnd = () => {
         if (isClosing) {
             onClose();
         }
@@ -57,7 +57,7 @@ function Modals({ isOpen, onClose, type, onOpenModal }) {
         <div
             className={cx('overlay', { closing: isClosing })}
             onClick={handleOverlayClick}
-            onAnimationEnd={hansleAnimationEnd}
+            onAnimationEnd={handleAnimationEnd}
         >
             <div className={cx('wrapper')}>
                 <ModalSmall onOpenModal={onOpenModal} onClose={onClose} type={type} />

@@ -1,4 +1,4 @@
-import UploadContent from '@/components/UploadPage/UploadContent';
+import UploadContent from '@/layouts/components/UploadPage/UploadContent';
 function Upload() {
     return <UploadContent />;
 }

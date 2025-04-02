@@ -1,5 +1,6 @@
+import LivePage from '@/layouts/components/LivePage';
 function LIVE() {
-    return <h2>LIVE page</h2>;
+    return <LivePage />;
 }
 
 export default LIVE;

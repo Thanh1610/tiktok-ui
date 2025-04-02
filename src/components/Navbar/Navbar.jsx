@@ -1,40 +1,24 @@
 import classNames from 'classnames/bind';
 import styles from './Navbar.module.scss';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 const cx = classNames.bind(styles);
-const categories = [
-    'All',
-    'Singing & Dancing',
-    'Comedy',
-    'Sports',
-    'Anime & Comics',
-    'Relationship',
-    'Shows',
-    'Lipsync',
-    'Daily Life',
-    'Beauty Care',
-    'Games',
-    'Society',
-    'Food',
-    'Cars',
-];
 
-function Navbar({ className }) {
-    const [active, setActive] = useState('All');
+function Navbar({ className, categories = [] }) {
+    const [active, setActive] = useState(categories[0] || '');
     const [showLeft, setShowLeft] = useState(false);
     const [showRight, setShowRight] = useState(true);
     const scrollRef = useRef();
 
-    const checkScroll = () => {
+    const checkScroll = useCallback(() => {
         if (scrollRef.current) {
             const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
             setShowLeft(scrollLeft > 0);
             setShowRight(scrollLeft + clientWidth < scrollWidth);
         }
-    };
+    }, []);
 
     const scroll = (direction) => {
         if (scrollRef.current) {
@@ -59,7 +43,8 @@ function Navbar({ className }) {
         listElement.addEventListener('scroll', checkScroll);
 
         return () => listElement.removeEventListener('scroll', checkScroll);
-    }, []);
+    }, [checkScroll]);
+
     return (
         <div className={cx('wrapper', className)}>
             {showLeft && (

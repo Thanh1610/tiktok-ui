@@ -4,12 +4,12 @@ import classNames from 'classnames/bind';
 import styles from './ProfilePage.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFire, faGear, faGripVertical, faPenToSquare, faRetweet } from '@fortawesome/free-solid-svg-icons';
-import { LinkIcon, ShareIcon } from '../Icons';
+import { LinkIcon, ShareIcon } from '../../../components/Icons';
 import { faBookmark, faHeart } from '@fortawesome/free-regular-svg-icons';
 
 import * as videoService from '@/apiServices/videoService';
-import CommentsModal from '../CommentsModal';
-import ShareModal from '../ShareModal';
+import CommentsModal from '../../../components/CommentsModal';
+import ShareModal from '../../../components/ShareModal';
 const cx = classNames.bind(styles);
 
 function ProfilePage() {
